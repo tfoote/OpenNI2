@@ -434,6 +434,28 @@ $(OUTPUT_FILE): copy-redist
             os.makedirs(toolsBinDir)
             self.copySample(toolsDir, toolsBinDir, 'NiViewer.Android', sourceSamplesDir = toolsSourceDir)
 
+        # self.copyRedistFiles(os.path.join(samplesDir, 'Bin'))
+        # self.copyGLUT(os.path.join(samplesDir, 'Bin'))
+        # self.copySample(samplesDir, 'SimpleRead')
+        # # TODO(tfoote) commenting copy of non-extant file
+        # #self.copySample(samplesDir, 'SimpleViewer', isGL = True)
+        # self.copySample(samplesDir, 'SimpleViewer.java', isJava = True)
+        # self.copySample(samplesDir, 'EventBasedRead')
+        # # TODO(tfoote) commenting copy of non-extant file
+        # #self.copySample(samplesDir, 'MultiDepthViewer', isGL = True)
+        # self.copySample(samplesDir, 'MultipleStreamRead')
+        # self.copySample(samplesDir, 'MWClosestPoint', isLibrary = True)
+        # self.copySample(samplesDir, 'MWClosestPointApp')
+        # #self.copySample(samplesDir, 'ClosestPointViewer', isGL = True)
+        
+        # # Tools
+        # toolsDir = os.path.join(self.outDir, 'Tools')
+        # self.copyRedistFiles(toolsDir)
+        # self.copyGLUT(toolsDir)
+        # ###self.copyTool(toolsDir, 'NiViewer', isGL = True)
+        # self.copyTool(toolsDir, 'PS1080Console')
+        # self.copyTool(toolsDir, 'PSLinkConsole')
+        
         # Documentation
         docDir = os.path.join(self.outDir, 'Documentation')
         self.copyDocumentation(docDir)
