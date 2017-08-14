@@ -43,7 +43,7 @@ XnStatus XnMirrorOneBytePixels(XnUChar* pBuffer, XnUInt32 nBufferSize, XnUInt32 
 	XnUInt8* pSrcEnd = pSrc + nBufferSize;
 	XnUInt8* pDest = NULL;
 	XnUInt8* pDestVal = &pLineBuffer[0] + nLineSize - 1;
-	XnUInt8* pDestEnd = &pLineBuffer[0] - 1;
+	XnUInt8* pDestEnd = &pLineBuffer[0];
 
 	if (nLineSize > XN_MIRROR_MAX_LINE_SIZE)
 	{
@@ -55,7 +55,7 @@ XnStatus XnMirrorOneBytePixels(XnUChar* pBuffer, XnUInt32 nBufferSize, XnUInt32 
 		xnOSMemCopy(pLineBuffer, pSrc, nLineSize);
 
 		pDest = pDestVal;
-		while (pDest != pDestEnd)
+		while (pDest >= pDestEnd)
 		{
 			*pSrc = *pDest;
 
@@ -76,7 +76,7 @@ XnStatus XnMirrorTwoBytePixels(XnUChar* pBuffer, XnUInt32 nBufferSize, XnUInt32 
 	XnUInt16* pSrcEnd = pSrc + nBufferSize / sizeof(XnUInt16);
 	XnUInt16* pDest = NULL;
 	XnUInt16* pDestVal = &pLineBuffer[0] + nLineSize - 1;
-	XnUInt16* pDestEnd = &pLineBuffer[0] - 1;
+	XnUInt16* pDestEnd = &pLineBuffer[0];
 	XnUInt16 nMemCpyLineSize = (XnUInt16)(nLineSize * sizeof(XnUInt16));
 	XnUInt16 nValue;
 
@@ -90,7 +90,7 @@ XnStatus XnMirrorTwoBytePixels(XnUChar* pBuffer, XnUInt32 nBufferSize, XnUInt32 
 		xnOSMemCopy(pLineBuffer, pSrc, nMemCpyLineSize);
 
 		pDest = pDestVal;
-		while (pDest != pDestEnd)
+		while (pDest >= pDestEnd)
 		{
 			nValue = pDest[0];
 			pSrc[0] = nValue;
@@ -112,7 +112,7 @@ XnStatus XnMirrorThreeBytePixels(XnUChar* pBuffer, XnUInt32 nBufferSize, XnUInt3
 	XnUInt8* pSrcEnd = pSrc + nBufferSize;
 	XnUInt8* pDest = NULL;
 	XnUInt8* pDestVal = &pLineBuffer[0] + nLineSize * 3 - 1;
-	XnUInt8* pDestEnd = &pLineBuffer[0] - 1;
+	XnUInt8* pDestEnd = &pLineBuffer[0];
 	XnUInt16 nMemCpyLineSize = (XnUInt16)(nLineSize * 3);
 
 	if (nMemCpyLineSize > XN_MIRROR_MAX_LINE_SIZE)
@@ -125,7 +125,7 @@ XnStatus XnMirrorThreeBytePixels(XnUChar* pBuffer, XnUInt32 nBufferSize, XnUInt3
 		xnOSMemCopy(pLineBuffer, pSrc, nMemCpyLineSize);
 
 		pDest = pDestVal;
-		while (pDest != pDestEnd)
+		while (pDest >= pDestEnd)
 		{
 			*pSrc = *(pDest-2);
 			*(pSrc+1) = *(pDest-1);
